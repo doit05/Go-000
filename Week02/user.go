@@ -4,9 +4,9 @@ type User struct {
  uid int64
 }
 
-func GetUsers(userIdList []int64) ([]User, error) {
+func (urv *UserSrv)GetUsers(userIdList []int64) ([]User, error) {
 	var userList []ImDeviceToken
-	err := DbManager.Table("user").Select(columns).Where("uid in (?)", userIdList).Find(&userList).Error
+	err := urv.dbinstance.Table("user").Select(columns).Where("uid in (?)", userIdList).Find(&userList).Error
 	if err == sql.ErrNoRows {
 		return userList,nil
 	}
