@@ -8,6 +8,7 @@
 2. 数据库其他增、删、改遇到错误，Wrap后返回
 
 代码实现：
+```
 func GetUsers(userIdList []int64) ([]User, error) {
 	var userList []ImDeviceToken
 	err := DbManager.Table("user").Select(columns).Where("uid in (?)", userIdList).Find(&userList).Error
@@ -19,3 +20,4 @@ func GetUsers(userIdList []int64) ([]User, error) {
 	}
 	return userList, err
 }
+```
